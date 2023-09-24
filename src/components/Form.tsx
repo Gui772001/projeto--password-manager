@@ -20,6 +20,11 @@ function Form({ SetCadastrar, addForm } :FormProps) {
       [name]: value,
     });
   };
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
+  const handleMostrarSenha = () => {
+    setMostrarSenha(!mostrarSenha);
+  };
 
   const handleSubmit = (e :React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -59,11 +64,19 @@ function Form({ SetCadastrar, addForm } :FormProps) {
         {' '}
         Senha :
         <input
-          type="password"
+          type={ mostrarSenha ? 'text' : 'password' }
           name="senha"
           value={ formData.senha }
           onChange={ handleChange }
         />
+        <label>
+          Esconder senhas
+          <input
+            type="checkbox"
+            checked={ mostrarSenha }
+            onChange={ handleMostrarSenha }
+          />
+        </label>
         <div
           className={ length1
             ? ACERTO
@@ -91,7 +104,13 @@ function Form({ SetCadastrar, addForm } :FormProps) {
       </label>
       <label>
         URL :
-        <input type="text" />
+        <input
+          type="text"
+          name="url"
+          value={ formData.url }
+          onChange={ handleChange }
+        />
+
       </label>
       <button
         onClick={ handleSubmit }

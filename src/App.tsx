@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import './App.css';
 import { useState } from 'react';
 import Title from './components/Title';
@@ -9,6 +10,7 @@ type Formseila = {
   login: string,
   senha: string,
   url: string,
+  Setdeletando: (deletando: string) => void;
 };
 
 function App() {
@@ -19,7 +21,6 @@ function App() {
       ...adicionando, e,
     ]);
   };
-  console.log(adicionando);
   return (
     <>
       <Title />
@@ -31,7 +32,7 @@ function App() {
       ) : (
         <button onClick={ () => SetCadastrar(true) }> Cadastrar nova senha </button>
       )}
-      <Adicionar adicionando={ adicionando } />
+      <Adicionar adicionando={ adicionando } Setadicionar={ Setadicionar } />
     </>
   );
 }
