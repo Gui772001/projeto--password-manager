@@ -34,6 +34,7 @@ function App() {
       )}
       <Adicionar adicionando={ adicionando } Setadicionar={ Setadicionar } />
     </>
+    
   );
 }
 

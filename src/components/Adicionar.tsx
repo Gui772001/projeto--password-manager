@@ -1,26 +1,41 @@
 import { nanoid } from 'nanoid';
+type Formseila = {
+  nome: string,
+  login: string,
+  senha: string,
+  url: string,
+
+};
 
  type Propsform =
- {
+ { Setadicionar :React.Dispatch<React.SetStateAction<Formseila[]>>
    adicionando : {
      nome: string,
      login: string,
      senha: string,
      url: string,
 
-   }[]
+   } [] 
 
  };
 function Adicionar(props :Propsform) {
   const { adicionando, Setadicionar } = props;
   const add = adicionando.length === 0;
-  const removerItem = (teste: number) => {
+  const removerIte  = (teste: number) => {
     const novaLista = [...adicionando];
     novaLista.splice(teste, 1);
     Setadicionar(novaLista);
   };
   const erro = 'Nenhuma senha cadastrada';
-  return (add ? erro
+  return (
+    <>
+    <label>
+          Esconder senhas
+          <input
+            type="checkbox"
+          />
+      </label>
+  { add ? erro
     : adicionando.map((adicionar) => (
       <>
         <span key={ nanoid() }>
@@ -41,17 +56,14 @@ function Adicionar(props :Propsform) {
         <span> </span>
         <button
           data-testid="remove-btn"
-          onClick={ removerItem }
+          onClick={ removerIte}
         >
           Remover
         </button>
-        <button>
-          Cadastrar nova senha
-
-        </button>
       </>
-    ))
-
+))}
+    
+ </>
   );
 }
 
