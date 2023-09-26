@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { useState } from 'react';
 type Formseila = {
   nome: string,
   login: string,
@@ -21,10 +22,14 @@ type Formseila = {
 function Adicionar(props :Propsform) {
   const { adicionando, Setadicionar } = props;
   const add = adicionando.length === 0;
+ const [Esco ,Setescon] = useState(false)
   const removerIte  = (teste: number) => {
     const novaLista = [...adicionando];
     novaLista.splice(teste, 1);
     Setadicionar(novaLista);
+  };
+  const troca = () => {
+    Setescon(!Esco)
   };
   const erro = 'Nenhuma senha cadastrada';
   return (
@@ -33,6 +38,7 @@ function Adicionar(props :Propsform) {
           Esconder senhas
           <input
             type="checkbox"
+            onClick={troca}
           />
       </label>
   { add ? erro
@@ -51,7 +57,16 @@ function Adicionar(props :Propsform) {
 
         </span>
         {' '}
-        <span key={ nanoid() }>{adicionar.senha}</span>
+        {Esco ? (
+          <span>
+          {'******'}
+          </span>
+        ) : (
+          <span>
+          { adicionar.senha}
+          </span>
+        )}
+   
         {' '}
         <span> </span>
         <button
