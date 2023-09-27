@@ -29,7 +29,7 @@ function Form({ SetCadastrar, addForm } :FormProps) {
   const handleSubmit = (e :React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     addForm(formData);
-    SetCadastrar(false)
+    SetCadastrar(false);
   };
   const nameTamanho = formData.nome.length > 0;
   const namelogin = formData.login.length > 0;
