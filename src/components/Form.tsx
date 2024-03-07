@@ -49,7 +49,6 @@ function Form({ SetCadastrar, addForm } :FormProps) {
           type="text"
           name="nome"
           value={ formData.nome }
-          onChange={ handleChange }
         />
       </label>
       <label>
